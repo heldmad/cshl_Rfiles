@@ -234,7 +234,12 @@ plot_cells(lungset, color_cells_by = "n.umi")
 plot_cells(lungset, color_cells_by = "num_genes_expressed")
 plot_cells(lungset, color_cells_by = "MT_perc")
 
-lungset$qc <- ifelse(lungset$n.umi > 500 & lungset$MT_perc < 20, "KEEP", "REMOVE")
+lungset$passQC <- (
+  lungset$n.umi > 500 &                # Maximum UMI (remove doublets)
+    lungset$num_genes_expressed > 200 &      # Minimum genes
+    lungset$num_genes_expressed < 7000 &     # Maximum genes (remove doublets)
+    lungset$MT_perc < 25                     # Maximum mitochondrial %
+)
 
 plot_cells(lungset, color_cells_by = "qc")
 plot_cells(lungset, color_cells_by = "clusters")
@@ -244,6 +249,8 @@ saveRDS(lungsetqc, "lungset_qcd.rds")
 
 
 cluster29 <- lungset[, lungset$clusters == "29"]
+cluster29 <- detect_genes(cluster29)
+expressed_29 <- data.frame(rowData(cluster29)) %>% arrange(desc(num_cells_expressed))
 fData(cluster29)$MT <- grepl("^mt-", rowData(cluster29)$gene_short_name)
 table(fData(cluster29)$MT) #sanity check
 
