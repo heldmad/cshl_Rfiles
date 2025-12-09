@@ -7,7 +7,7 @@
 ###### Setup ###################################################################
 ################################################################################
 # Set your working directory to where the data is downloaded
-setwd("/Users/heldm/Desktop/cshl/single_cell_project/") #CHANGE ME!!!
+setwd("~/cshl_Rfiles/cshl_Rfiles/") #CHANGE ME!!!
 
 library(monocle3)
 library(ggplot2)
@@ -35,9 +35,9 @@ library(SoupX)
 #etc. anything else you need)
 
 ## An alternative method of loading the data
-lungset <- load_mm_data(mat_path = "lung_dataset/raw_feature_bc_matrix/matrix.mtx.gz", 
-                        feature_anno_path = "lung_dataset/raw_feature_bc_matrix/features.tsv.gz", 
-                        cell_anno_path = "lung_dataset/raw_feature_bc_matrix/barcodes.tsv.gz")
+lungset <- load_mm_data(mat_path = "raw_feature_bc_matrix/matrix.mtx.gz", 
+                        feature_anno_path = "raw_feature_bc_matrix/features.tsv.gz", 
+                        cell_anno_path = "raw_feature_bc_matrix/barcodes.tsv.gz")
 
 # learn about the cell_data_set class
 class(lungset) #cell_data_set
