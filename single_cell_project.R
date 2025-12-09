@@ -260,6 +260,13 @@ ggplot(data.frame(colData(cluster29)), aes(y=MT_perc)) +
   coord_flip() +
   theme_light()
 
+#plot cells by mitochondria percentage and n.umi 
+ggplot(data.frame(colData(cluster29)), aes(x=n.umi, y=MT_perc)) +
+  geom_point(alpha=0.3) + 
+  theme_light() + 
+  scale_x_log10(breaks = trans_breaks("log10", function(x) 10^x),
+                labels = trans_format("log10", math_format(10^.x)))
+
 # What thresholds should be used? One approach is to use adaptive thresholds.
 # If you can reasonably assume that most cells are of acceptable quality,
 # identifying and removing outliers may be a solid approach.
