@@ -244,8 +244,8 @@ lungset$passQC <- (
 plot_cells(lungset, color_cells_by = "passQC")
 plot_cells(lungset, color_cells_by = "clusters")
 
-lungsetqc <- lungset[, lungset$qc == "KEEP"]
-saveRDS(lungsetqc, "lungset_qcd.rds")
+lungsetqc <- lungset[, lungset$passQC == "TRUE"]
+saveRDS(lungsetqc, "lungset_passqc.rds")
 
 
 cluster29 <- lungset[, lungset$clusters == "29"]
