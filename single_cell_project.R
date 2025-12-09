@@ -73,18 +73,18 @@ lungset <- reduce_dimension(lungset)
 lungset #reducedDimNames(2): PCA UMAP
 
 # Reduce dimensionality - minDist = 0.05, nn = 5
-?reduce_dimension
-lungset_nn5 <- reduce_dimension(lungset, 
-                                umap.min_dist = 0.01,
-                                umap.n_neighbors = 5)
-lungset_nn5 #reducedDimNames(2): PCA UMAP
+#?reduce_dimension
+#lungset_nn5 <- reduce_dimension(lungset, 
+#                                umap.min_dist = 0.01,
+#                                umap.n_neighbors = 5)
+#lungset_nn5 #reducedDimNames(2): PCA UMAP
 
 #save in object for easier plotting later
 lungset$UMAP1 <- reducedDim(lungset, "UMAP")[,1]
 lungset$UMAP2 <- reducedDim(lungset, "UMAP")[,2]
 
-lungset_nn5$UMAP1 <- reducedDim(lungset_nn5, "UMAP")[,1]
-lungset_nn5$UMAP2 <- reducedDim(lungset_nn5, "UMAP")[,2]
+#lungset_nn5$UMAP1 <- reducedDim(lungset_nn5, "UMAP")[,1]
+#lungset_nn5$UMAP2 <- reducedDim(lungset_nn5, "UMAP")[,2]
 
 # Plot within Monocle3
 ?plot_cells
