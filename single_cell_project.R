@@ -240,6 +240,8 @@ plot_cells(lungset, color_cells_by = "qc")
 plot_cells(lungset, color_cells_by = "clusters")
 
 lungsetqc <- lungset[, lungset$qc == "KEEP"]
+saveRDS(lungsetqc, "lungset_qcd.rds")
+
 
 cluster29 <- lungset[]
 
