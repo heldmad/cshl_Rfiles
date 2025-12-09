@@ -69,6 +69,7 @@ plot_pc_variance_explained(lungset)
 
 # Reduce dimensionality - default params
 ?reduce_dimension
+set.seed(1)
 lungset <- reduce_dimension(lungset)
 lungset #reducedDimNames(2): PCA UMAP
 
@@ -94,6 +95,7 @@ plot_cells(lungset, genes= c("Wt1", "Acta2", "Malat1"))
 
 # Run an unsupervised clustering
 ?cluster_cells
+set.seed(1)
 lungset <- cluster_cells(lungset)
 lungset$clusters <- clusters(lungset) #save this in colData for easier access
 plot_cells(lungset)
