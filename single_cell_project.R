@@ -241,7 +241,7 @@ lungset$passQC <- (
     lungset$MT_perc < 25                     # Maximum mitochondrial %
 )
 
-plot_cells(lungset, color_cells_by = "qc")
+plot_cells(lungset, color_cells_by = "passQC")
 plot_cells(lungset, color_cells_by = "clusters")
 
 lungsetqc <- lungset[, lungset$qc == "KEEP"]
