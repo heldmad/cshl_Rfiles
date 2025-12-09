@@ -243,7 +243,7 @@ lungsetqc <- lungset[, lungset$qc == "KEEP"]
 saveRDS(lungsetqc, "lungset_qcd.rds")
 
 
-cluster29 <- lungset[]
+cluster29 <- lungset[, lungset$clusters == "29"]
 
 
 # What thresholds should be used? One approach is to use adaptive thresholds.
