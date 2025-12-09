@@ -244,7 +244,21 @@ saveRDS(lungsetqc, "lungset_qcd.rds")
 
 
 cluster29 <- lungset[, lungset$clusters == "29"]
+fData(cluster29)$MT <- grepl("^mt-", rowData(cluster29)$gene_short_name)
+table(fData(cluster29)$MT) #sanity check
 
+pData(cluster29)$MT_reads <- Matrix::colSums(exprs(cluster29)[fData(cluster29)$MT,])
+pData(cluster29)$MT_perc <- pData(cluster29)$MT_reads/Matrix::colSums(exprs(cluster29))*100
+summary(cluster29$MT_perc)
+
+pData(cluster29)$n.umi <- Matrix::colSums(exprs(cluster29))
+
+
+#view mito percentage of cluster 29
+ggplot(data.frame(colData(cluster29)), aes(y=MT_perc)) +
+  geom_density(fill="salmon") + #yet another type of plot
+  coord_flip() +
+  theme_light()
 
 # What thresholds should be used? One approach is to use adaptive thresholds.
 # If you can reasonably assume that most cells are of acceptable quality,
