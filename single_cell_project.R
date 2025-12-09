@@ -103,6 +103,9 @@ plot_cells(lungset)
 ?top_markers
 marker_test_res <- top_markers(lungset, group_cells_by="cluster")
 
+#or just read in RDS file from github
+marker_test_res <- readRDS("~/cshl_Rfiles/cshl_Rfiles/lungset_marker_test_results.RDS")
+
 ?saveRDS
 saveRDS(marker_test_res, file="lungset_marker_test_results.RDS") #save for later use
 
